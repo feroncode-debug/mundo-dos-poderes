@@ -1,0 +1,32 @@
+{
+  "name": "mundo-dos-poderes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mundo dos Poderes - pacote multiplataforma",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis",
+    "cap:sync": "cap sync",
+    "android:open": "cap open android",
+    "ios:open": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.mundodospoderes.game",
+    "productName": "Mundo dos Poderes",
+    "directories": {"buildResources": "build"},
+    "files": ["public/**/*", "electron/**/*", "package.json"],
+    "win": {"target": ["nsis"]},
+    "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true}
+  }
+}
