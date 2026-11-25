@@ -45,8 +45,37 @@
 </style>
 <style>
 body{padding:0;overflow:hidden}.app{width:100%;max-width:none}header,.layout{display:none!important}.stage{position:fixed;inset:0;width:100vw;height:100dvh;border:0;border-radius:0;display:flex;align-items:center;justify-content:center}.stage canvas{width:min(100vw,calc(100dvh * 720 / 440));height:min(100dvh,calc(100vw * 440 / 720));image-rendering:pixelated}.mobile-controls{display:flex!important;z-index:10;bottom:env(safe-area-inset-bottom)}.mobile-dpad{grid-template-columns:repeat(3,clamp(42px,9dvh,60px));grid-template-rows:repeat(3,clamp(40px,9dvh,60px))}.mobile-actions button{min-height:42px}.main-action-bar{z-index:12}#fireFlameZBtn,#earthStonesBtn,#earthQuakeBtn,#waterTsunamiBtn,#lightningMobile{display:none!important}#mobileSkills{position:absolute;right:10px;top:42%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(2,60px);gap:6px;z-index:12}#mobileSkills button{min-height:42px;padding:4px;font-size:13px;background:#254c74e8}#mobileSkills small{display:block;font-size:9px}#rotateTip{display:none;position:fixed;inset:0;z-index:2000;background:#091b2b;color:white;align-items:center;justify-content:center;text-align:center;font-size:23px;padding:20px}@media(orientation:portrait){#rotateTip{display:flex}}@media(max-height:350px){#mobileSkills{right:120px;top:auto;bottom:5px;transform:none;grid-template-columns:repeat(4,45px)}#mobileSkills button{min-height:30px}}
-</style><style id="retroHudStyle">#retroHud{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);z-index:11;width:clamp(180px,27vw,320px);font-family:monospace;pointer-events:none;filter:drop-shadow(2px 3px 0 #0009)}#retroHud .top{display:flex;justify-content:space-between;gap:5px;margin-bottom:4px;align-items:center}#retroHud .top .tag{padding:2px 4px;font-size:clamp(9px,2dvh,14px)}#retroHud .tag{background:#0b0b12;border:2px solid #f3f1ed;box-shadow:0 0 0 2px #08080c;color:white;padding:2px 6px;font-weight:900;font-size:clamp(10px,2.4dvh,16px)}#retroHud .tag b{color:#ff5265}#retroHud .hearts{display:flex;gap:3px;align-items:center;background:#111119;border:3px solid #e94d5d;outline:2px solid #111119;padding:3px 7px;justify-content:center}#retroHud .heart{font-size:clamp(16px,4.2dvh,25px);line-height:1;color:#ff3448;text-shadow:1px 2px #760c24}#retroHud .heart.empty{color:#eee;text-shadow:1px 2px #666}#retroHud .xp{margin:5px auto 0;display:flex;align-items:center;gap:6px;background:#090b11;border:3px solid white;outline:2px solid #101017;padding:3px 6px;width:80%;box-sizing:border-box}#retroHud .xp b{color:#ff4d61;font-size:clamp(10px,2.5dvh,16px)}#retroHud .track{height:clamp(8px,2.4dvh,13px);flex:1;background:repeating-linear-gradient(90deg,#25252c 0 12%,#101015 12% 14%);border:1px solid #666}#retroXpFill{height:100%;background:repeating-linear-gradient(90deg,#fa3d55 0 17%,#c5233c 17% 20%);width:0%}@media(max-height:360px){#retroHud{width:190px;bottom:3px}#retroHud .heart{font-size:14px}#retroHud .hearts{padding:2px 4px}#retroHud .xp{margin-top:3px;padding:1px 3px}}</style></head>
+</style><style id="retroHudStyle">#retroHud{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);z-index:11;width:clamp(180px,27vw,320px);font-family:monospace;pointer-events:none;filter:drop-shadow(2px 3px 0 #0009)}#retroHud .top{display:flex;justify-content:space-between;gap:5px;margin-bottom:4px;align-items:center}#retroHud .top .tag{padding:2px 4px;font-size:clamp(9px,2dvh,14px)}#retroHud .tag{background:#0b0b12;border:2px solid #f3f1ed;box-shadow:0 0 0 2px #08080c;color:white;padding:2px 6px;font-weight:900;font-size:clamp(10px,2.4dvh,16px)}#retroHud .tag b{color:#ff5265}#retroHud .hearts{display:flex;gap:3px;align-items:center;background:#111119;border:3px solid #e94d5d;outline:2px solid #111119;padding:3px 7px;justify-content:center}#retroHud .heart{font-size:clamp(16px,4.2dvh,25px);line-height:1;color:#ff3448;text-shadow:1px 2px #760c24}#retroHud .heart.empty{color:#eee;text-shadow:1px 2px #666}#retroHud .xp{margin:5px auto 0;display:flex;align-items:center;gap:6px;background:#090b11;border:3px solid white;outline:2px solid #101017;padding:3px 6px;width:80%;box-sizing:border-box}#retroHud .xp b{color:#ff4d61;font-size:clamp(10px,2.5dvh,16px)}#retroHud .track{height:clamp(8px,2.4dvh,13px);flex:1;background:repeating-linear-gradient(90deg,#25252c 0 12%,#101015 12% 14%);border:1px solid #666}#retroXpFill{height:100%;background:repeating-linear-gradient(90deg,#fa3d55 0 17%,#c5233c 17% 20%);width:0%}@media(max-height:360px){#retroHud{width:190px;bottom:3px}#retroHud .heart{font-size:14px}#retroHud .hearts{padding:2px 4px}#retroHud .xp{margin-top:3px;padding:1px 3px}}
+/* Abertura elemental cinematográfica */
+#elementalIntro{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at center,#172d49 0%,#080f20 62%,#02050c 100%);color:#fff;text-align:center;animation:introFadeOut .8s ease 5.2s forwards}
+#elementalIntro .intro-title{position:relative;z-index:3;padding:20px;opacity:0;transform:scale(.72);animation:introTitleIn 1.1s cubic-bezier(.2,.8,.2,1) 2.5s forwards}
+#elementalIntro h1{font-size:clamp(2rem,8vw,5.4rem);line-height:1.05;margin:0;font-weight:1000;letter-spacing:.04em;color:#fff4c2;text-shadow:0 0 12px #ffd35c,0 0 35px #ff7b26,4px 5px #07101d}
+#elementalIntro .intro-sub{margin-top:14px;letter-spacing:.28em;font-size:clamp(.65rem,2vw,.95rem);color:#b8eaff}
+#elementalIntro .element{position:absolute;font-size:clamp(3rem,10vw,7rem);filter:drop-shadow(0 0 20px currentColor);opacity:0;animation:elementBurst 2.7s ease-out forwards}
+#elementalIntro .fire{color:#ff7a24;left:12%;top:38%;animation-delay:.15s}
+#elementalIntro .ice{color:#8beaff;right:12%;top:38%;animation-delay:.35s}
+#elementalIntro .bolt{color:#ffe76b;left:50%;top:8%;transform:translateX(-50%);animation-delay:.75s}
+#elementalIntro .leaf{color:#79f0a0;left:18%;bottom:12%;animation-delay:.55s}
+#elementalIntro .water{color:#55bfff;right:18%;bottom:12%;animation-delay:.65s}
+#elementalIntro .skip{position:absolute;z-index:5;right:18px;bottom:18px;background:#132b48;border:1px solid #9edcff;border-radius:10px;padding:10px 16px;color:white;font-weight:800}
+#elementalIntro .rune{position:absolute;width:min(48vw,330px);aspect-ratio:1;border:2px solid #9bdcff66;border-radius:50%;box-shadow:0 0 35px #5bd8ff55,inset 0 0 35px #5bd8ff33;animation:runeSpin 5s linear infinite}
+#elementalIntro .rune:before,#elementalIntro .rune:after{content:"";position:absolute;inset:12%;border:2px dashed #ffd36a88;border-radius:50%}
+#elementalIntro .rune:after{inset:27%;border-color:#8beaff99;transform:rotate(45deg)}
+@keyframes introTitleIn{to{opacity:1;transform:scale(1)}}
+@keyframes elementBurst{0%{opacity:0;transform:scale(.2) rotate(-35deg)}25%{opacity:1}75%{opacity:.9;transform:scale(1.2) rotate(12deg)}100%{opacity:0;transform:scale(1.8) rotate(35deg)}}
+@keyframes runeSpin{to{transform:rotate(360deg)}}
+@keyframes introFadeOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){#elementalIntro *,#elementalIntro{animation-duration:.01ms!important;animation-delay:0ms!important}}
+
+</style></head>
 <body>
+
+<div id="elementalIntro" aria-label="Abertura elemental do Mundo dos Poderes">
+ <div class="rune"></div><span class="element fire">🔥</span><span class="element ice">❄️</span><span class="element bolt">⚡</span><span class="element leaf">🌿</span><span class="element water">🌊</span>
+ <div class="intro-title"><h1>MUNDO<br> DOS PODERES</h1><div class="intro-sub">DESPERTE SEU ELEMENTO</div></div>
+ <button class="skip" id="skipElementalIntro">PULAR »</button>
+</div>
+
 <div id="titleScreen" role="dialog" aria-label="Tela inicial do jogo">
  <div class="title-card">
   <div class="logo-mark">⚡🌿🔥</div>
@@ -999,6 +1028,15 @@ $('openSoundSettings').addEventListener('click',()=>{$('pauseMenu').style.displa
 $('backToPause').addEventListener('click',()=>{$('soundSettings').style.display='none';$('pauseMenu').style.display='flex'});
 $('exitToTitle').addEventListener('click',()=>{saveGame(false);$('pauseMenu').style.display='none';$('soundSettings').style.display='none';$('inventoryOverlay').classList.remove('open');closeElementWheel();$('titleScreen').style.display='flex';$('continueBtn').disabled=false;isPlaying=false;paused=false;keys.clear();$('pauseBtn').textContent='⏸️ Pausar';window.GameAudio?.pauseMusic(true)});
 newGame();loadGame(false);renderMissions();updateHud();
+
+// Abertura aparece ao iniciar o site; pular leva diretamente à tela de título.
+(function(){
+ const intro=document.getElementById('elementalIntro');
+ const finish=()=>{if(!intro||intro.dataset.done==='1')return;intro.dataset.done='1';intro.style.display='none';};
+ document.getElementById('skipElementalIntro')?.addEventListener('click',finish);
+ window.setTimeout(finish,6000);
+})();
+
 const hasSave=!!localStorage.getItem(SAVE_KEY);$('continueBtn').disabled=!hasSave;
 function drawCreatorPreview(){
  const c=$('creatorPreview'),g=c.getContext('2d');g.clearRect(0,0,180,180);g.imageSmoothingEnabled=false;
